@@ -1,14 +1,15 @@
 using Autofac;
-using TagsCloudVisualization.Draw;
-using TagsCloudVisualization.Saver;
-using TagsCloudVisualization.Client;
-using TagsCloudVisualization.Reader;
-using TagsCloudVisualization.Filter;
+using TagCloudConsoleApp.SettingsProvider;
 using TagsCloudVisualization.Settings;
-using TagsCloudVisualization.Generator;
-using TagsCloudVisualization.CloudLayouter;
+using TagsCloudVisualization.Interfaces;
+using TagsCloudVisualization.Models.Savers;
+using TagsCloudVisualization.Models.Readers;
+using TagsCloudVisualization.Models.Filters;
+using TagsCloudVisualization.Models.Generators;
+using TagsCloudVisualization.Models.CloudLayouters;
+using TagsCloudVisualization.Models.Visualizatiuons;
 
-var client = new Client(args);
+var client = new SettingsProvider(args);
 var settings = client.GetSettings();
 var builder = new ContainerBuilder();
 
@@ -23,8 +24,8 @@ return;
 
 void RegisterServices(ContainerBuilder containerBuilder)
 {
-    containerBuilder.RegisterType<SpiralPositionGenerator>().As<IPositionGenerator>().SingleInstance();
-    containerBuilder.RegisterType<RectangleDraftsman>().As<IRectangleDraftsman>().SingleInstance();
+    containerBuilder.RegisterType<ArchimedeanSpiralPositionGenerator>().As<IPositionGenerator>().SingleInstance();
+    containerBuilder.RegisterType<RectangleVisualizatiuon>().As<IRectangleDraftsman>().SingleInstance();
     containerBuilder.RegisterType<CircularCloudLayouter>().As<ICloudLayouter>().SingleInstance();
     containerBuilder.RegisterType<BitmapGenerator>().As<IBitmapGenerator>().SingleInstance();
     containerBuilder.RegisterType<LowerCaseTextFilter>().As<ITextFilter>().SingleInstance();

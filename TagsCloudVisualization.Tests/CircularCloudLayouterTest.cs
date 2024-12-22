@@ -3,11 +3,12 @@ using System.Drawing;
 using FluentAssertions;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
-using TagsCloudVisualization.Draw;
-using TagsCloudVisualization.Saver;
-using TagsCloudVisualization.Generator;
 using TagsCloudVisualization.Extension;
-using TagsCloudVisualization.CloudLayouter;
+using TagsCloudVisualization.Interfaces;
+using TagsCloudVisualization.Models.CloudLayouters;
+using TagsCloudVisualization.Models.Generators;
+using TagsCloudVisualization.Models.Savers;
+using TagsCloudVisualization.Models.Visualizatiuons;
 
 namespace TagsCloudVisualizationTests;
 
@@ -21,11 +22,11 @@ public class CircularCloudLayouterTest
     {
         if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
         {
-            var drawer = new RectangleDraftsman(1500, 1500);
+            var drawer = new RectangleVisualizatiuon(1500, 1500);
             var filename = $"{TestContext.CurrentContext.WorkDirectory}\\{TestContext.CurrentContext.Test.Name}.png";
             drawer.CreateImage(rectanglesForCrashTest);
-            var imageSaver = new ImageSaver(new(filename, "png"));
-            imageSaver.SaveImageToFile(drawer.Bitmap);
+            var imageSaver = new ImageSaver();
+            imageSaver.SaveImageToFile(drawer.Bitmap, new(filename, "png"));
 
             Console.WriteLine($"Tag cloud visualization saved to file {filename}");
         }
@@ -35,7 +36,7 @@ public class CircularCloudLayouterTest
     public void PutNextRectangle_PlaceFirstRectangleAtCenter()
     {
         var center = new Point(1, 1);
-        var layouter = new CircularCloudLayouter(new SpiralPositionGenerator(new(40, 2, center)));
+        var layouter = new CircularCloudLayouter(new ArchimedeanSpiralPositionGenerator(new(40, 2, center)));
         var nextRectangle = layouter.PutNextRectangle(new Size(10, 10));
 
         rectanglesForCrashTest = layouter.Rectangles;
@@ -51,7 +52,7 @@ public class CircularCloudLayouterTest
         A.CallTo(() => mockPositionGenerator.GetNextPoint()).Returns(center);
         var layouter = new CircularCloudLayouter(mockPositionGenerator);
 
-        Action action = () => layouter.PutNextRectangle(new Size(sizeX, sizeY));
+        var action = () => layouter.PutNextRectangle(new Size(sizeX, sizeY));
         action.Should().Throw<ArgumentException>().WithMessage("Width and height should be greater than zero.");
     }
 
@@ -59,7 +60,7 @@ public class CircularCloudLayouterTest
     public void PutNextRectangle_AddRectangles(int sizeX, int sizeY, int count)
     {
         var center = new Point(0, 0);
-        var layouter = new CircularCloudLayouter(new SpiralPositionGenerator(new(40, 2, center)));
+        var layouter = new CircularCloudLayouter(new ArchimedeanSpiralPositionGenerator(new(40, 2, center)));
 
         for (var i = 0; i < count; i++)
         {
@@ -77,7 +78,7 @@ public class CircularCloudLayouterTest
     public void PutNextRectangle_CreateLayoutWithoutIntersections(int countRectangles)
     {
         var center = new Point(0, 0);
-        var layouter = new CircularCloudLayouter(new SpiralPositionGenerator(new(40, 2, center)));
+        var layouter = new CircularCloudLayouter(new ArchimedeanSpiralPositionGenerator(new(40, 2, center)));
         rectanglesForCrashTest = layouter.Rectangles;
 
         for (var i = 0; i < rectanglesForCrashTest.Count; i++)
@@ -111,7 +112,7 @@ public class CircularCloudLayouterTest
     {
         var center = new Point(xCenter, yCenter);
         var randomRectangles = new RandomRectangleGenerator().GenerateRectangles(countRectangles);
-        var layouter = new CircularCloudLayouter(new SpiralPositionGenerator(new(40, 2, center)));
+        var layouter = new CircularCloudLayouter(new ArchimedeanSpiralPositionGenerator(new(40, 2, center)));
         
         foreach (var rectangle in randomRectangles)
         {
@@ -164,7 +165,7 @@ public class CircularCloudLayouterTest
     {
         var center = new Point(xCenter, yCenter);
         var randomRectangles = new RandomRectangleGenerator().GenerateRectangles(countRectangles);
-        var layouter = new CircularCloudLayouter(new SpiralPositionGenerator(new(40, 2, center)));
+        var layouter = new CircularCloudLayouter(new ArchimedeanSpiralPositionGenerator(new(40, 2, center)));
         
         foreach (var rectangle in randomRectangles)
         {
