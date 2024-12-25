@@ -27,10 +27,11 @@ public class ImageSaverTest
     }
 
     [TestCase(null)]
+    [TestCase("")]
     public void CreateImage_OnInvalidParameters_ThrowsArgumentException(string filename)
     {
         drawer.CreateImage(cloudLayouter.Rectangles);
-        var action = () => imageSaver.SaveImageToFile(drawer.Bitmap, new SaveSettings(filename, "png"));
+        var action = () => imageSaver.SaveImageToFile(drawer.Bitmap, new SaveSettings("Images", filename, "png"));
         action.Should().Throw<ArgumentException>();
     }
 
@@ -39,7 +40,7 @@ public class ImageSaverTest
     public void CreateImage_OnInvalidParameters_ThrowsDirectoryNotFoundException(string filename)
     {
         drawer.CreateImage(cloudLayouter.Rectangles);
-        var action = () => imageSaver.SaveImageToFile(drawer.Bitmap, new SaveSettings(filename, "png"));
+        var action = () => imageSaver.SaveImageToFile(drawer.Bitmap, new SaveSettings("Images", filename, "png"));
         action.Should().Throw<DirectoryNotFoundException>();
     }
 
@@ -50,7 +51,7 @@ public class ImageSaverTest
     public void CreateImage_OnInvalidParameters_ThrowsExternalException(string filename)
     {
         drawer.CreateImage(cloudLayouter.Rectangles);
-        var action = () => imageSaver.SaveImageToFile(drawer.Bitmap, new SaveSettings(filename, "png"));
+        var action = () => imageSaver.SaveImageToFile(drawer.Bitmap, new SaveSettings("Images", filename, "png"));
         action.Should().Throw<ExternalException>();
     }
 }

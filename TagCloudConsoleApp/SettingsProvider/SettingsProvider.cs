@@ -5,17 +5,20 @@ using TagsCloudVisualization.Settings;
 
 namespace TagCloudConsoleApp.SettingsProvider;
 
-public class SettingsProvider(string[] args) : ISettingsProvider
+public class SettingsProvider(CommandLineOptions options) : ISettingsProvider
 {
-    private readonly string[] args = args;
-
     public SettingsManager GetSettings()
     {
-        return new(
-            new BitmapGeneratorSettings(new(1500, 1500), Color.Black, Color.Peru, new("Arial")),
-            new SaveSettings("image","png"),
-            new SpiralGeneratorSettings(0, 2, new Point(750, 750)),
-            new TextReaderSettings("input.txt", Encoding.UTF8)
-        );
+        return new(new BitmapGeneratorSettings(new(options.ImageWidth, options.ImageHeight),
+                GetColor(options.BackgroundColor),
+                GetColor(options.Color), new(options.Font)),
+            new SaveSettings(options.PathToSaveDirectory, options.FileName, options.FileFormat),
+            new SpiralGeneratorSettings(options.StepIncreasingAngle, options.StepIncreasingRadius,
+                new Point(options.CenterX, options.CenterY)),
+            new TextReaderSettings(options.PathToText, Encoding.UTF8),
+            new TextSettings(options.MinFontSize, options.MaxFontSize),
+            new BoringWordsSettings(options.PathToBoringWords));
     }
+
+    private static Color GetColor(string color) => Color.FromName(color);
 }

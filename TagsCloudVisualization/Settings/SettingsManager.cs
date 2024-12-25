@@ -4,4 +4,6 @@ public record SettingsManager(
     BitmapGeneratorSettings BitmapGeneratorSettings,
     SaveSettings SaveSettings,
     SpiralGeneratorSettings SpiralGeneratorSettings,
-    TextReaderSettings TextReaderSettings);
+    TextReaderSettings TextReaderSettings,
+    TextSettings TextSettings,
+    BoringWordsSettings BoringWordsSettings);

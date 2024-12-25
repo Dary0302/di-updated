@@ -26,7 +26,7 @@ public class CircularCloudLayouterTest
             var filename = $"{TestContext.CurrentContext.WorkDirectory}\\{TestContext.CurrentContext.Test.Name}.png";
             drawer.CreateImage(rectanglesForCrashTest);
             var imageSaver = new ImageSaver();
-            imageSaver.SaveImageToFile(drawer.Bitmap, new(filename, "png"));
+            imageSaver.SaveImageToFile(drawer.Bitmap, new("Images", filename, "png"));
 
             Console.WriteLine($"Tag cloud visualization saved to file {filename}");
         }

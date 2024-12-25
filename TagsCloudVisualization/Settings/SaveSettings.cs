@@ -2,7 +2,7 @@ using System.Drawing.Imaging;
 
 namespace TagsCloudVisualization.Settings;
 
-public record SaveSettings(string Filename, string Format)
+public record SaveSettings(string FilePath, string Filename, string Format)
 {
     public ImageFormat ImageFormat => Format.ToLower() switch
     {
