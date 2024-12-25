@@ -1,4 +1,3 @@
-using System.Text;
 using TagsCloudVisualization.Interfaces;
 using TagsCloudVisualization.Settings;
 

@@ -1,4 +1,3 @@
-using System.Text;
 using NPOI.XWPF.UserModel;
 using TagsCloudVisualization.Interfaces;
 using TagsCloudVisualization.Settings;

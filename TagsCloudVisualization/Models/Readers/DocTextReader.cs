@@ -1,4 +1,3 @@
-using System.Text;
 using Spire.Doc;
 using Spire.Doc.Documents;
 using TagsCloudVisualization.Settings;
