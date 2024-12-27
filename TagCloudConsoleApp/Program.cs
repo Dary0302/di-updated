@@ -33,6 +33,7 @@ void RegisterServices(ContainerBuilder containerBuilder)
     containerBuilder.RegisterType<FileReadersSelector>().AsSelf();
     containerBuilder.RegisterType<ArchimedeanSpiralPositionGenerator>().As<IPositionGenerator>().SingleInstance();
     containerBuilder.RegisterType<RectangleVisualizatiuon>().As<IRectangleDraftsman>().SingleInstance();
+    containerBuilder.RegisterType<FileReadersSelector>().As<IFileReadersSelector>().SingleInstance();
     containerBuilder.RegisterType<CircularCloudLayouter>().As<ICloudLayouter>().SingleInstance();
     containerBuilder.RegisterType<BitmapGenerator>().As<IBitmapGenerator>().SingleInstance();
     containerBuilder.RegisterType<BoringWordsTextFilter>().As<ITextFilter>().SingleInstance();

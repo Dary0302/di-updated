@@ -9,7 +9,7 @@ public class TagCloudImageGenerator(
     IImageSaver saver,
     SaveSettings saveSettings,
     TextSettings textSettings,
-    FileReadersSelector fileReadersSelector,
+    IFileReadersSelector fileReadersSelector,
     IBitmapGenerator bitmapGenerator,
     IEnumerable<ITextFilter> filters)
 {

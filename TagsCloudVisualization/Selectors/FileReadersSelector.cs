@@ -4,7 +4,7 @@ using TagsCloudVisualization.Models.Settings;
 
 namespace TagsCloudVisualization.Selectors;
 
-public class FileReadersSelector(TextReaderSettings textReaderSettings, IComponentContext componentContext)
+public class FileReadersSelector(TextReaderSettings textReaderSettings, IComponentContext componentContext) : IFileReadersSelector
 {
     public ITextReader SelectFileReader()
     {

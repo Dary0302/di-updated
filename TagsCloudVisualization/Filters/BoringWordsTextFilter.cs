@@ -5,12 +5,11 @@ namespace TagsCloudVisualization.Filters;
 
 public class BoringWordsTextFilter(BoringWordsSettings boringWordsSettings, ITextReader textReader) : ITextFilter
 {
-    private HashSet<string> boringWords = [];
+    public IEnumerable<string> BoringWords => [..boringWords];
+    private readonly HashSet<string> boringWords = textReader.ReadText(boringWordsSettings.Path).ToHashSet();
 
     public IEnumerable<string> ApplyFilter(IEnumerable<string> text)
     {
-        boringWords = textReader.ReadText(boringWordsSettings.Path).ToHashSet();
-
         return text.Where(word => !boringWords.Contains(word));
     }
 
