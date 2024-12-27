@@ -1,7 +1,7 @@
 using System.Drawing;
 using TagsCloudVisualization.Interfaces;
 
-namespace TagsCloudVisualization.Models.Generators;
+namespace TagsCloudVisualization.Generators;
 
 public class RandomRectangleGenerator : IRectangleGenerator
 {

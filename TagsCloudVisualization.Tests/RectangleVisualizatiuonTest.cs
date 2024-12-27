@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using FluentAssertions;
-using TagsCloudVisualization.Models.Visualizatiuons;
+using TagsCloudVisualization.Visualizatiuons;
 
 namespace TagsCloudVisualizationTests;
 

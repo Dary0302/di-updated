@@ -1,8 +1,8 @@
 using Autofac;
 using TagsCloudVisualization.Interfaces;
-using TagsCloudVisualization.Settings;
+using TagsCloudVisualization.Models.Settings;
 
-namespace TagsCloudVisualization.Models.Selectors;
+namespace TagsCloudVisualization.Selectors;
 
 public class FileReadersSelector(TextReaderSettings textReaderSettings, IComponentContext componentContext)
 {

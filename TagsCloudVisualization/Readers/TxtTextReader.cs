@@ -1,7 +1,7 @@
 using TagsCloudVisualization.Interfaces;
-using TagsCloudVisualization.Settings;
+using TagsCloudVisualization.Models.Settings;
 
-namespace TagsCloudVisualization.Models.Readers;
+namespace TagsCloudVisualization.Readers;
 
 public class TxtTextReader(TextReaderSettings settings) : ITextReader
 {

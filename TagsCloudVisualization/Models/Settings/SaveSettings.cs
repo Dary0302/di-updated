@@ -1,6 +1,6 @@
 using System.Drawing.Imaging;
 
-namespace TagsCloudVisualization.Settings;
+namespace TagsCloudVisualization.Models.Settings;
 
 public record SaveSettings(string FilePath, string Filename, string Format)
 {

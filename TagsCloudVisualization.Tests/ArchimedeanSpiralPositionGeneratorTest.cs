@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using NUnit.Framework;
 using FluentAssertions;
-using TagsCloudVisualization.Models.Generators;
+using TagsCloudVisualization.Generators;
 
 namespace TagsCloudVisualizationTests;
 

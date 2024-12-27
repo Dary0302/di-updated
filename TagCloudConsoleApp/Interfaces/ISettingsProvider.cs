@@ -1,4 +1,4 @@
-using TagsCloudVisualization.Settings;
+using TagsCloudVisualization.Models.Settings;
 
 namespace TagCloudConsoleApp.Interfaces;
 

@@ -1,5 +1,5 @@
 using System.Drawing;
 
-namespace TagsCloudVisualization.Settings;
+namespace TagsCloudVisualization.Models.Settings;
 
 public record SpiralGeneratorSettings(double AngleOffset, double SpiralStep, Point Center);

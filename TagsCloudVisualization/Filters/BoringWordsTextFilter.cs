@@ -1,7 +1,7 @@
-using TagsCloudVisualization.Settings;
 using TagsCloudVisualization.Interfaces;
+using TagsCloudVisualization.Models.Settings;
 
-namespace TagsCloudVisualization.Models.Filters;
+namespace TagsCloudVisualization.Filters;
 
 public class BoringWordsTextFilter(BoringWordsSettings boringWordsSettings, ITextReader textReader) : ITextFilter
 {

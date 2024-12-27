@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace TagsCloudVisualization.Settings;
+namespace TagsCloudVisualization.Models.Settings;
 
 public record BitmapGeneratorSettings(
     Size ImageSize,

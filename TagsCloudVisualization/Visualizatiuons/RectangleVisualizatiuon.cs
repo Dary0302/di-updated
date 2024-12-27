@@ -1,7 +1,7 @@
 using System.Drawing;
 using TagsCloudVisualization.Interfaces;
 
-namespace TagsCloudVisualization.Models.Visualizatiuons;
+namespace TagsCloudVisualization.Visualizatiuons;
 
 public class RectangleVisualizatiuon : IRectangleDraftsman
 {

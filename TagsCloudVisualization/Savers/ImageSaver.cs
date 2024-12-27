@@ -1,8 +1,8 @@
 using System.Drawing;
-using TagsCloudVisualization.Settings;
 using TagsCloudVisualization.Interfaces;
+using TagsCloudVisualization.Models.Settings;
 
-namespace TagsCloudVisualization.Models.Savers;
+namespace TagsCloudVisualization.Savers;
 
 public class ImageSaver : IImageSaver
 {

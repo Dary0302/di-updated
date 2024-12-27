@@ -1,6 +1,6 @@
 using TagsCloudVisualization.Interfaces;
 
-namespace TagsCloudVisualization.Models.Filters;
+namespace TagsCloudVisualization.Filters;
 
 public class LowerCaseTextFilter : ITextFilter
 {

@@ -2,11 +2,11 @@ using FakeItEasy;
 using NUnit.Framework;
 using FluentAssertions;
 using System.Runtime.InteropServices;
-using TagsCloudVisualization.Settings;
 using TagsCloudVisualization.Interfaces;
-using TagsCloudVisualization.Models.Savers;
 using TagsCloudVisualization.Models.CloudLayouters;
-using TagsCloudVisualization.Models.Visualizatiuons;
+using TagsCloudVisualization.Models.Settings;
+using TagsCloudVisualization.Savers;
+using TagsCloudVisualization.Visualizatiuons;
 
 namespace TagsCloudVisualizationTests;
 

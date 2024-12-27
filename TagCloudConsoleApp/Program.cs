@@ -2,19 +2,19 @@ using Autofac;
 using CommandLine;
 using TagCloudConsoleApp;
 using TagCloudConsoleApp.SettingsProvider;
+using TagsCloudVisualization.Filters;
+using TagsCloudVisualization.Generators;
 using TagsCloudVisualization.Interfaces;
-using TagsCloudVisualization.Models.Savers;
-using TagsCloudVisualization.Models.Readers;
-using TagsCloudVisualization.Models.Filters;
-using TagsCloudVisualization.Models.Generators;
 using TagsCloudVisualization.Models.CloudLayouters;
-using TagsCloudVisualization.Models.Selectors;
-using TagsCloudVisualization.Models.Visualizatiuons;
-using TagsCloudVisualization.Settings;
+using TagsCloudVisualization.Models.Settings;
+using TagsCloudVisualization.Readers;
+using TagsCloudVisualization.Savers;
+using TagsCloudVisualization.Selectors;
+using TagsCloudVisualization.Visualizatiuons;
 
 var options = Parser.Default.ParseArguments<CommandLineOptions>(args).Value;
-var client = new SettingsProvider(options);
-var settings = client.GetSettings();
+var settingsProvider = new SettingsProvider(options);
+var settings = settingsProvider.GetSettings();
 var builder = new ContainerBuilder();
 
 RegisterServices(builder);

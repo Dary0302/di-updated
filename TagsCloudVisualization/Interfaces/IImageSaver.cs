@@ -1,5 +1,5 @@
 using System.Drawing;
-using TagsCloudVisualization.Settings;
+using TagsCloudVisualization.Models.Settings;
 
 namespace TagsCloudVisualization.Interfaces;
 

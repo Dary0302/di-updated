@@ -1,8 +1,9 @@
-using TagsCloudVisualization.Settings;
 using TagsCloudVisualization.Interfaces;
-using TagsCloudVisualization.Models.Selectors;
+using TagsCloudVisualization.Models;
+using TagsCloudVisualization.Models.Settings;
+using TagsCloudVisualization.Selectors;
 
-namespace TagsCloudVisualization.Models.Generators;
+namespace TagsCloudVisualization.Generators;
 
 public class TagCloudImageGenerator(
     IImageSaver saver,
@@ -12,11 +13,6 @@ public class TagCloudImageGenerator(
     IBitmapGenerator bitmapGenerator,
     IEnumerable<ITextFilter> filters)
 {
-    private readonly int maxFontSize = textSettings.MaxFontSize;
-    private readonly int minFontSize = textSettings.MinFontSize;
-    private int maxWordCount;
-    private int minWordCount;
-
     public void GenerateCloud()
     {
         var text = fileReadersSelector.SelectFileReader().ReadText();
@@ -27,17 +23,17 @@ public class TagCloudImageGenerator(
             .OrderByDescending(words => words.Count())
             .ToDictionary(words => words.Key, words => words.Count());
 
-        minWordCount = wordsFrequency.Values.Min();
-        maxWordCount = wordsFrequency.Values.Max();
+        var minWordCount = wordsFrequency.Values.Min();
+        var maxWordCount = wordsFrequency.Values.Max();
 
         var words = wordsFrequency
-            .Select(w => new TagWord(w.Key, GetFontSize(w.Value)));
+            .Select(w => new TagWord(w.Key, GetFontSize(w.Value, minWordCount, maxWordCount)));
 
         var bitmap = bitmapGenerator.GenerateBitmap(words);
         saver.SaveImageToFile(bitmap, saveSettings);
     }
 
-    private int GetFontSize(int frequencyCount) =>
-        minFontSize + (maxFontSize - minFontSize)
+    private int GetFontSize(int frequencyCount, int minWordCount, int maxWordCount) =>
+        textSettings.MinFontSize + (textSettings.MaxFontSize - textSettings.MinFontSize)
         * (frequencyCount - minWordCount) / (maxWordCount - minWordCount);
 }

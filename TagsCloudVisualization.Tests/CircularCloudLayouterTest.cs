@@ -4,11 +4,11 @@ using FluentAssertions;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using TagsCloudVisualization.Extension;
+using TagsCloudVisualization.Generators;
 using TagsCloudVisualization.Interfaces;
 using TagsCloudVisualization.Models.CloudLayouters;
-using TagsCloudVisualization.Models.Generators;
-using TagsCloudVisualization.Models.Savers;
-using TagsCloudVisualization.Models.Visualizatiuons;
+using TagsCloudVisualization.Savers;
+using TagsCloudVisualization.Visualizatiuons;
 
 namespace TagsCloudVisualizationTests;
 

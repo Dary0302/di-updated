@@ -1,8 +1,9 @@
 using System.Drawing;
 using TagsCloudVisualization.Interfaces;
-using TagsCloudVisualization.Settings;
+using TagsCloudVisualization.Models;
+using TagsCloudVisualization.Models.Settings;
 
-namespace TagsCloudVisualization.Models.Generators;
+namespace TagsCloudVisualization.Generators;
 
 public class BitmapGenerator(ICloudLayouter layouter, BitmapGeneratorSettings settings) : IBitmapGenerator
 {

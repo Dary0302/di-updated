@@ -1,9 +1,9 @@
 using Spire.Doc;
 using Spire.Doc.Documents;
-using TagsCloudVisualization.Settings;
 using TagsCloudVisualization.Interfaces;
+using TagsCloudVisualization.Models.Settings;
 
-namespace TagsCloudVisualization.Models.Readers;
+namespace TagsCloudVisualization.Readers;
 
 public class DocTextReader(TextReaderSettings settings) : ITextReader
 {
